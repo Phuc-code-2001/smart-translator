@@ -10,9 +10,9 @@ app_sidebar.render()
 st.title("Smart Translator")
 st.write("Công cụ này giúp bạn tự động dịch văn bản sang ngôn ngữ đích. Có kèm theo chú thích từ khóa hoặc từ chuyên ngành.")
 
-textbox = st.text_area("Enter a text: ", height=250, label_visibility="hidden")
-selected_language = st.selectbox("Select language to translate to: ", APP_CONSTANTS.languages, index=1)
-if st.button("Translate", type="primary"):
+textbox = st.text_area("Nhập văn bản: ", height=250, label_visibility="hidden")
+selected_language = st.selectbox("Chọn ngôn ngữ đích: ", APP_CONSTANTS.languages, index=1)
+if st.button("Dịch", type="primary"):
     selected_model = app_sidebar.get_selected_model()
     selected_annotation_language = app_sidebar.get_selected_annotation_language()
 
