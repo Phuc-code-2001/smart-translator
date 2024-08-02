@@ -1,5 +1,5 @@
 from core.prompts import get_prompt_for_translate_text, get_prompt_for_translate_words
-from core.llms import get_model
+from core.llms import get_model, safety_settings
 
 def stream_text_generator(stream_response):
     def generator():
@@ -14,7 +14,7 @@ def translate_text(model_name, text, language, annotation_language, stream=False
     """Translate text to target language."""
     model = get_model(model_name)
     prompt = get_prompt_for_translate_text(text, language, annotation_language)
-    response = model.generate_content(prompt, stream=stream)
+    response = model.generate_content(prompt, stream=stream, safety_settings=safety_settings)
     if not stream:
         try:
             return response.candidates[0].content.parts[0].text
@@ -27,7 +27,7 @@ def translate_words(model_name, text, language, annotation_language, stream=Fals
     """Translate words to target language."""
     model = get_model(model_name)
     prompt = get_prompt_for_translate_words(text, language, annotation_language)
-    response = model.generate_content(prompt)
+    response = model.generate_content(prompt, stream=stream, safety_settings=safety_settings)
 
     if not stream:
         try:

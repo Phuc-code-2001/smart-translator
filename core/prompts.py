@@ -1,16 +1,13 @@
 translate_text_prompt = """
-    Hãy dịch văn bản sau sang {language}.
-    Đối với các từ khóa hoặc các từ chuyên ngành, hãy giữ nguyên chúng và thay vào đó thêm chú thích ở bên dưới.
-    Nếu không thể dịch được, hãy ghi "Không thể dịch được" bằng ngôn ngữ {annotation_language}.
-    Nếu văn bản bên dưới trùng với ngôn ngữ đích, hãy tối ưu nội dung nhưng vẫn chú thích từ khóa hoặc từ chuyên ngành.
-    LƯU Ý QUAN TRỌNG: 
-        1. Đối với chú thích dùng ngôn ngữ {annotation_language}
-        2. Nếu văn bản chứa từ ngữ nhạy cảm, hãy thay thế chúng bằng từ khác không nhạy cảm nhưng đồng nghĩa, dịch và đưa ra cảnh báo.
-    Văn bản như sau:
-    ```
+    Translate the following text into {language}.
+    For keywords or technical terms, keep them as they are and add annotations below.
+    If a word cannot be translated, write "Cannot be translated" in {annotation_language}.
+    If the text below is in the target language, optimize the content but still annotate keywords or technical terms.
+    IMPORTANT NOTES:
+        1. Use {annotation_language} for annotations.
+        2. If the text contains sensitive words, replace them with non-sensitive synonyms, translate them, and issue a warning.
+    The text is as follows:
     {text}
-    ```
-
 """
 
 def get_prompt_for_translate_text(text, language, annotation_language):
@@ -18,14 +15,14 @@ def get_prompt_for_translate_text(text, language, annotation_language):
 
 
 translate_words_prompt = """
-    Hãy dịch văn bản sau theo từng từ hoặc cụm từ sang {language}.
-    Với mỗi từ, cho biết các tình huống sử dụng và đặt câu (bằng ngôn ngữ trùng với ngôn ngữ đầu vào).
-    Nếu có thể, hãy phân tích tiền tố, hậu tố, gốc từ của từ đã cho.
-    Sau cùng, giới thiệu về nguồn gốc từ và tạo một bảng gồm các từ có chung gốc từ với từ đó.
-    LƯU Ý QUAN TRỌNG: 
-        1. Đối với chú thích dùng ngôn ngữ {annotation_language}
-        2. Nếu văn bản chứa từ ngữ nhạy cảm, hãy thay thế chúng bằng từ khác không nhạy cảm nhưng đồng nghĩa, dịch và đưa ra cảnh báo.
-    Văn bản như sau:
+    Translate the following text word by word or phrase by phrase into {language}.
+    For each word, provide its usage contexts and construct sentences (in the same language as the input text) demonstrating its usage.
+    If possible, analyze the prefix, suffix, and root of the word.
+    Finally, introduce the etymology of the word and create a table listing words that share the same root.
+    IMPORTANT NOTES:
+        1. Use {annotation_language} for annotations.
+        2. If the text contains sensitive words, replace them with non-sensitive synonyms, translate them, and issue a warning.
+    The text is as follows:
     {text}
 """
 
